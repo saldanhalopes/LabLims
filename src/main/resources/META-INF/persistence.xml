@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="LabLims_PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>prati_sgcq.model.Analise</class>
+    <class>prati_sgcq.model.AnaliseFinalidade</class>
+    <class>prati_sgcq.model.AnaliseProdutividade</class>
+    <class>prati_sgcq.model.AnaliseStatus</class>
+    <class>prati_sgcq.model.Coluna</class>
+    <class>prati_sgcq.model.ColunaConfig</class>
+    <class>prati_sgcq.model.Padroes</class>
+    <class>prati_sgcq.model.VagaColuna</class>
+    <class>prati_sgcq.audit.AuditEntity</class>
+    <class>prati_sgcq.model.PadroesConfig</class>
+    <class>prati_sgcq.model.Post</class>
+    <class>prati_sgcq.model.PostDetails</class>
+    <class>br.com.lablims.audit.AuditRevision</class>
+    <class>br.com.lablims.model.Form</class>
+    <class>br.com.lablims.model.Acesso</class>
+    <class>br.com.lablims.model.RegraAcesso</class>
+    <class>br.com.lablims.model.FalhaAcesso</class>
+    <class>br.com.lablims.model.Grupo</class>
+    <class>br.com.lablims.model.Material</class>
+    <class>br.com.lablims.model.Metodologia</class>
+    <class>br.com.lablims.model.Sistema</class>
+    <class>br.com.lablims.model.Usuario</class>
+    <class>br.com.lablims.model.Setor</class>
+    <class>br.com.lablims.audit.AuditEntityType</class>
+    <class>br.com.lablims.model.Login</class>
+    <class>br.com.lablims.model.Seguranca</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://PRTMC1939:1433;databaseName=db_prati_sgcq"/>
+      <property name="javax.persistence.jdbc.user" value="db_sys"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.password" value="Beast666"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>
