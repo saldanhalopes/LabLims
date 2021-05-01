@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EtiquetaRegistroRfCaixa" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b0472cc9-9db1-46aa-837e-c707af5c65a2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="caixa_id" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[SELECT tb_caixa_rf_materia_prima.*,
+(SELECT MAX(tb_registro_rf_materia_prima.data_vencimento)
+FROM tb_registro_rf_materia_prima
+WHERE tb_registro_rf_materia_prima.caixa_id = $P{caixa_id}) AS data_vencimento
+FROM tb_caixa_rf_materia_prima
+WHERE tb_caixa_rf_materia_prima.id = $P{caixa_id}]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="caixa" class="java.lang.String"/>
+	<field name="data_abertura" class="java.sql.Timestamp"/>
+	<field name="data_fechamento" class="java.sql.Timestamp"/>
+	<field name="version" class="java.lang.Integer"/>
+	<field name="centro_custo" class="java.lang.String"/>
+	<field name="deposito" class="java.lang.String"/>
+	<field name="data_vencimento" class="java.sql.Timestamp"/>
+	<variable name="ANO_DESCARTE" class="java.lang.Integer">
+		<variableExpression><![CDATA[new Integer($F{data_vencimento}.getYear()+ 1903)]]></variableExpression>
+	</variable>
+	<variable name="MES_DESCARTE" class="java.lang.Integer">
+		<variableExpression><![CDATA[new Integer($F{data_vencimento}.getMonth() + 1)]]></variableExpression>
+	</variable>
+	<variable name="DATA_DESCARTE" class="java.lang.String">
+		<variableExpression><![CDATA[$V{MES_DESCARTE} + " / " + $V{ANO_DESCARTE}]]></variableExpression>
+	</variable>
+	<detail>
+		<band height="336" splitType="Stretch">
+			<rectangle>
+				<reportElement x="4" y="1" width="420" height="335" uuid="3198e215-58dd-452c-9483-24fe379810d1"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="16" y="8" width="398" height="91" uuid="7300d440-497e-4c64-9a5f-126fd939e038"/>
+				<imageExpression><![CDATA["C:\\LabLims\\logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Transparent" x="4" y="183" width="85" height="26" forecolor="#000000" backcolor="#E6E6E6" uuid="d55c8637-be99-402f-aa36-d4a8bb0740f5"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Caixa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="4" y="270" width="53" height="31" forecolor="#000000" backcolor="#E6E6E6" uuid="33d8b602-96a8-4ec4-ab10-10104da67fd6"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="102" width="420" height="30" forecolor="#000000" uuid="36253acb-077b-4aff-ae1b-75a539a751b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROLE DE QUALIDADE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="132" width="420" height="31" forecolor="#000000" uuid="bc800ba5-0a1b-4be7-98ae-d0ece1f2abde"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amostras]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="4" y="209" width="420" height="61" forecolor="#000000" uuid="a5504354-79c1-4a70-afda-20b2fb1f8896"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="50"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{caixa}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement x="57" y="270" width="367" height="31" uuid="70e180a7-7001-4a8d-9e1d-3dc0b0b8c51f"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{caixa}.substring($F{caixa}.indexOf("/") + 1, $F{caixa}.length())) + 2000
+
+]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="4" y="301" width="115" height="31" forecolor="#000000" backcolor="#E6E6E6" uuid="e982e22e-98d2-4d1a-991e-4d5feca3ae75"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCARTE:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement x="119" y="301" width="305" height="31" uuid="3bc51ec4-ec3d-45b0-a888-25bb5390e26f"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{DATA_DESCARTE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

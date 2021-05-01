@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EtiquetaColuna" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f0b9cb7f-ae38-4406-9c3f-94e10e88342a">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="115"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.util.JRImageLoader"/>
+	<import value="javax.swing.ImageIcon"/>
+	<parameter name="id_coluna" class="java.lang.Long"/>
+	<parameter name="img" class="java.lang.Object" isForPrompting="false">
+		<parameterDescription><![CDATA[The letterhead image]]></parameterDescription>
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT tb_coluna_util.id,
+tb_coluna_util.codigo_coluna,
+tb_coluna_util.data_ativacao,
+tb_coluna_util.data_descarte,
+tb_coluna_util.data_verificacao,
+tb_coluna_util.serial_number,
+tb_coluna_util.obs,
+tb_coluna.codigo_sap,
+tb_coluna.part_number,
+diametro.configuracao as diametro_coluna,
+fabricante.configuracao as fabricante_coluna,
+fase.configuracao as fase_coluna,
+marca.configuracao as marca_coluna,
+particula.configuracao as particula_coluna,
+tamanho.configuracao as tamanho_coluna,
+tipo.configuracao as tipo_coluna,
+tb_setor.sigla_setor,
+tb_departamento.sigla_departamento,
+tb_coluna_vaga.vaga,
+tb_coluna_storage.id as storage_id,
+tb_coluna_storage.tipo as storage_tipo,
+tb_coluna_storage.numero as storage_numero,
+tb_analise.analise,
+tb_metodologia.cod_metodo,
+tb_metodologia.versao as versao_mtd
+FROM tb_coluna_util
+INNER JOIN tb_coluna
+ON tb_coluna.id = tb_coluna_util.coluna_id
+INNER JOIN tb_analise
+ON tb_analise.id = tb_coluna_util.analise_id
+INNER JOIN tb_metodologia
+ON tb_metodologia.id = tb_coluna_util.metodologia_id
+INNER JOIN tb_coluna_vaga
+ON tb_coluna_vaga.id = tb_coluna_util.vaga_id
+INNER JOIN tb_coluna_storage
+ON tb_coluna_storage.id = tb_coluna_vaga.coluna_storage_id
+INNER JOIN tb_setor
+ON tb_setor.id = tb_coluna_storage.setor_id
+INNER JOIN tb_departamento
+ON tb_departamento.id = tb_setor.departamento_id
+INNER JOIN tb_coluna_config diametro
+ON diametro.id = tb_coluna.diametro_coluna
+INNER JOIN tb_coluna_config fabricante
+ON fabricante.id = tb_coluna.fabricante_coluna
+INNER JOIN tb_coluna_config fase
+ON fase.id = tb_coluna.fase_coluna
+INNER JOIN tb_coluna_config marca
+ON marca.id = tb_coluna.marca_coluna
+INNER JOIN tb_coluna_config particula
+ON particula.id = tb_coluna.particula_coluna
+INNER JOIN tb_coluna_config tamanho
+ON tamanho.id = tb_coluna.tamanho_coluna
+INNER JOIN tb_coluna_config tipo
+ON tipo.id = tb_coluna.tipo_coluna
+WHERE tb_coluna_util.id = $P{id_coluna}]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="codigo_coluna" class="java.lang.Integer"/>
+	<field name="data_ativacao" class="java.sql.Timestamp"/>
+	<field name="data_descarte" class="java.sql.Timestamp"/>
+	<field name="data_verificacao" class="java.sql.Timestamp"/>
+	<field name="serial_number" class="java.lang.String"/>
+	<field name="obs" class="java.lang.String"/>
+	<field name="codigo_sap" class="java.lang.String"/>
+	<field name="part_number" class="java.lang.String"/>
+	<field name="diametro_coluna" class="java.lang.String"/>
+	<field name="fabricante_coluna" class="java.lang.String"/>
+	<field name="fase_coluna" class="java.lang.String"/>
+	<field name="marca_coluna" class="java.lang.String"/>
+	<field name="particula_coluna" class="java.lang.String"/>
+	<field name="tamanho_coluna" class="java.lang.String"/>
+	<field name="tipo_coluna" class="java.lang.String"/>
+	<field name="sigla_setor" class="java.lang.String"/>
+	<field name="sigla_departamento" class="java.lang.String"/>
+	<field name="vaga" class="java.lang.Integer"/>
+	<field name="storage_id" class="java.lang.Long"/>
+	<field name="storage_tipo" class="java.lang.String"/>
+	<field name="storage_numero" class="java.lang.Integer"/>
+	<field name="analise" class="java.lang.String"/>
+	<field name="cod_metodo" class="java.lang.String"/>
+	<field name="versao_mtd" class="java.lang.Integer"/>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="325" height="48" uuid="473311b2-b31a-469f-9462-f486300ffc38"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+			</frame>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="63" y="0" width="63" height="16" uuid="0a5aecd2-4a5e-433d-8f0a-b7a4c44de89e"/>
+				<box leftPadding="0">
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_ativacao}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="63" height="16" uuid="1f22bada-bceb-4a32-9d4a-2c1b12a627b5"/>
+				<box leftPadding="0">
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sigla_departamento}+"-"+
+$F{tipo_coluna}+"-"+
+"0000".toString().substring($F{codigo_coluna}.toString().length())+
+$F{codigo_coluna}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="0" y="16" width="126" height="16" uuid="25648a4b-6328-43ba-8549-cb05c466943b"/>
+				<box leftPadding="0">
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_metodo}.isEmpty() ? "Multipropósito" : $F{cod_metodo} + " - V. " +   $F{versao_mtd}.toString()]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="0" y="32" width="126" height="16" uuid="93230e28-9ec9-4797-86f0-068e39f15ce8"/>
+				<box leftPadding="0">
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obs}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="199" y="0" width="126" height="16" uuid="8ac87df2-c621-4cde-9339-690d560cee50"/>
+				<box leftPadding="0">
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sigla_setor}
++ " - " + $F{storage_tipo}
++ " - " + $F{storage_numero}
++ "  Vaga: " + $F{vaga}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="199" y="16" width="126" height="16" uuid="c8a8e4ef-ed3e-43f1-9c24-50fd56a834e4"/>
+				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="3">
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fabricante_coluna} + " - " + $F{marca_coluna}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="199" y="32" width="126" height="16" uuid="815f201d-2ae1-499c-a62d-23919d2a37db"/>
+				<box leftPadding="0">
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_coluna}  + " - " +$F{tamanho_coluna} + "mm x  " +
+$F{diametro_coluna} + "mm x " + $F{particula_coluna}+ "um "]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="142" y="0" width="43" height="48" uuid="a368f478-75c4-4180-8119-006bd20ebfee"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<imageExpression><![CDATA[$P{img}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>
