@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="LabLims_PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>br.com.lablims.audit.AuditEntityType</class>
+    <class>br.com.lablims.audit.AuditRevision</class>
+    <class>br.com.lablims.model.Acesso</class>
+    <class>br.com.lablims.model.Analise</class>
+    <class>br.com.lablims.model.AnaliseTipo</class>
+    <class>br.com.lablims.model.Departamento</class>
+    <class>br.com.lablims.model.Form</class>
+    <class>br.com.lablims.model.Grupo</class>
+    <class>br.com.lablims.model.Login</class>
+    <class>br.com.lablims.model.LoteMateriaPrima</class>
+    <class>br.com.lablims.model.LoteMateriaPrimaFaltante</class>
+    <class>br.com.lablims.model.LoteMateriaPrimaInfo</class>
+    <class>br.com.lablims.model.Material</class>
+    <class>br.com.lablims.model.Metodologia</class>
+    <class>br.com.lablims.model.RegraAcesso</class>
+    <class>br.com.lablims.model.Seguranca</class>
+    <class>br.com.lablims.model.Setor</class>
+    <class>br.com.lablims.model.Sistema</class>
+    <class>br.com.lablims.model.Turno</class>
+    <class>br.com.lablims.model.Usuario</class>
+    <class>br.com.lablims.model.PlanoAnalise</class>
+    <class>br.com.lablims.model.Coluna</class>
+    <class>br.com.lablims.model.ColunaConfig</class>
+    <class>br.com.lablims.model.ColunaVaga</class>
+    <class>br.com.lablims.model.AnaliseStatus</class>
+    <class>br.com.lablims.model.LoteMateriaPrimaStatus</class>
+    <class>br.com.lablims.model.Reagente</class>
+    <class>br.com.lablims.model.TrocaTurno</class>
+    <class>br.com.lablims.model.PlanoAnaliseReagente</class>
+    <class>br.com.lablims.model.UnidadeMedida</class>
+    <class>br.com.lablims.model.CaixaRfMateriaPrima</class>
+    <class>br.com.lablims.model.ColunaStorage</class>
+    <class>br.com.lablims.model.ColunaUtil</class>
+    <class>br.com.lablims.model.PlanoAnaliseColuna</class>
+    <class>br.com.lablims.model.RegistroRfMateriaPrima</class>
+    <class>br.com.lablims.model.Arquivos</class>
+    <class>br.com.lablims.model.RegistroSolucaoReagente</class>
+  </persistence-unit>
+</persistence>
